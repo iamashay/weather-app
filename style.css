@@ -1,0 +1,127 @@
+:root {
+    --search-icon-area: 1px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    background-color: #045de9;
+    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-direction: column;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+main {
+    margin-top: calc(15px + 4vh);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(15px + 5vh);
+    align-self: center;
+    padding: 10px;
+    min-width: 340px;
+    font-family: cursive;
+    font-weight: bolder;
+    color: #fff;
+    
+}
+
+#current-info {
+    display: flex;
+    gap: calc(10px + 1vw);
+    align-items: center;
+}
+
+#search {
+    position: relative;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+#search .search-icon {
+    position: absolute;
+    right: 4px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    width: 25px;
+}
+
+#search input {
+    outline: none;
+    border:none;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;  
+
+}
+
+#search input {
+    width: inherit;
+    height: 2.5rem;
+    background-color: #00000057;
+    font-size: 1.5rem;
+    color: #06374e;
+    background-image: url(imgs/Location-icon.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-left: 30px;
+    background-position-y: center;
+    background-position-x: 2px;
+    border-radius: 6px;
+    padding-right: 28px;
+    transition: all 500ms linear;
+    border: 1px solid #0abced;
+}
+
+#search input:focus {
+    border: 1px solid #fff;
+    background-color: #4a4a4a57;
+}
+
+#search input::placeholder {
+    color: #d3d3d3e0;
+}
+
+
+
+#logo {
+    font-size: 2rem;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 1%;
+}
+
+
+.temperature {
+    font-size: 5rem;
+}
+
+.location-name {
+    color: #004358;
+    font-size: 2rem;
+}

@@ -8,17 +8,23 @@
 </head>
 <body>
     <header>
-        <div id="logo">WeatherApp</div>
+        <div id="logo"><a href="#"><img src="imgs/logo.png" alt="logo weather app"></a></div>
     </header>
+    <div id="search">
+        <input type="text" placeholder="Enter location"> 
+        <span class="search-icon"><img src="imgs/search-icon.png" alt="search"></span>
+    </div>
     <main>
-        <div id="search"><input type="text" placeholder="Enter location"></div>
+        <section id="location-info">
+            <div class="location-name">Kolkata, India</div>
+        </section>
         <section id="current-info">
-            <div id="weather-image"></div>
+            <img id="weather-image" src="./imgs/sunny.png"></img>
             <div id="weather-info">
                 <div class="normal-info">Light Rain</div>
-                <div class="normal-info">20</div>
-                <div class="normal-info">Wind: 12mph</div>
-                <div class="normal-info">Humidity: 12 ph</div>
+                <div class="normal-info temperature">20</div>
+                <div class="normal-info"><b>Wind:</b> 12mph</div>
+                <div class="normal-info"><b>Humidity:</b> 12 ph</div>
             </div>
         </section>
     </main>
