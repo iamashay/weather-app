@@ -47,7 +47,7 @@ main {
 
 #current-info {
     display: flex;
-    gap: calc(10px + 1vw);
+    gap: 5rem;
     align-items: center;
 }
 
@@ -108,8 +108,6 @@ main {
     color: #d3d3d3e0;
 }
 
-
-
 #logo {
     font-size: 2rem;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -123,5 +121,5 @@ main {
 
 .location-name {
     color: #004358;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
