@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <title>WeatherApp</title>
 </head>
 <body>
@@ -21,10 +22,10 @@
         <section id="current-info">
             <img id="weather-image" src="./imgs/sunny.png"></img>
             <div id="weather-info">
-                <div class="normal-info">Light Rain</div>
+                <div class="normal-info description">Light Rain</div>
                 <div class="normal-info temperature">20</div>
-                <div class="normal-info"><b>Wind:</b> 12mph</div>
-                <div class="normal-info"><b>Humidity:</b> 12 ph</div>
+                <div class="normal-info"><b>Wind:</b> <span class="wind"></span></div>
+                <div class="normal-info"><b>Humidity:</b><span class="humidity">12 ph</span></div>
             </div>
         </section>
     </main>
