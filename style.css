@@ -152,3 +152,12 @@ main {
 #weather-info b {
     color: #004358;
 }
+
+#weather-info:nth-child(2) {
+    position: relative;
+}
+
+.degree {
+    position: absolute;
+    right: 16%;
+}
