@@ -25,6 +25,11 @@
         const windDiv = qs(".wind")
         const humidityDiv = qs(".humidity")
         const weatherImgElm = qs("#weather-image")
+        const loaderDiv = qs("#loader")
+        const mainElm = qs("main")
+
+        loaderDiv.style.display = "block"
+        mainElm.style.display = "none"
 
         getWeatherDetails(locationInput)
         .then(
@@ -36,6 +41,8 @@
                 windDiv.textContent = current.wind_kph
                 humidityDiv.textContent = current.humidity
                 weatherImgElm.src = current.condition.icon.replace("64x64", "128x128")
+                loaderDiv.style.display = "none"
+                mainElm.style.display = "flex"
             }, 
             (error) => {
                 alert("Error "+error)
