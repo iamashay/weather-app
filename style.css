@@ -148,3 +148,7 @@ main {
     font-family: cursive;
     display: none;
 }
+
+#weather-info b {
+    color: #004358;
+}

@@ -12,6 +12,12 @@
             throw new Error(error.message)
         }
     }
+
+    const fetchImage =  async (url) => {
+        const getImg = await fetch(url)
+        const imgBlob = await getImg.blob()
+        return URL.createObjectURL(imgBlob)
+    }
     
     const searchInput = qs("#search input")
     const searchInputButton = qs(".search-icon")
@@ -43,7 +49,7 @@
         errorDiv.style.display = "none"        
     }
 
-    const updateView = ()=>{
+    const updateView = (defaultDisplay)=>{
         
 
         const locationDiv = qs(".location-name")
@@ -52,27 +58,33 @@
         const windDiv = qs(".wind")
         const humidityDiv = qs(".humidity")
         const weatherImgElm = qs("#weather-image")
+        const currentLocation = defaultDisplay ? "New Delhi" : searchInput.value
 
         showLoader()
 
         try {
-            validateInput()
+            if (!defaultDisplay) validateInput()
         } catch(error){
             showError(error.message)
             return
         }
 
 
-        getWeatherDetails(searchInput.value)
+        getWeatherDetails(currentLocation)
         .then(
-            (response) => {
+            async (response) => {
                 const {location, current} = {...response}
                 locationDiv.textContent = `${location.name}, ${location.region}, ${location.country}`
                 descriptionDiv.textContent = current.condition.text
                 temperatureDiv.textContent = Math.floor(current.temp_c)
                 windDiv.textContent = current.wind_kph
                 humidityDiv.textContent = current.humidity
-                weatherImgElm.src = current.condition.icon.replace("64x64", "128x128")
+                const imgURL = "https:"+current.condition.icon.replace("64x64", "128x128")
+                try {
+                    weatherImgElm.src = await fetchImage(imgURL)
+                } catch (e) {
+                    weatherImgElm.src = "./imgs/default.png"
+                }
                 showMainBody()
             }, 
             (error) => {
@@ -84,6 +96,6 @@
 
     searchInputButton.addEventListener("click", updateView)
     searchInput.addEventListener("keypress", (e) => e.key === 'Enter' ? updateView() : false)
-
+    updateView(true)
 
 })()
