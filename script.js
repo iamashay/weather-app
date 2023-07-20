@@ -15,23 +15,55 @@
     
     const searchInput = qs("#search input")
     const searchInputButton = qs(".search-icon")
-    
+    const loaderDiv = qs("#loader")
+    const mainElm = qs("main")
+    const errorDiv = qs("#error")
+
+
+    const validateInput = () => {
+        if(searchInput.value.trim() === "") throw new Error("Location cannot be empty!")
+        if(searchInput.value.length <= 2) throw new Error("Name's too short!")
+    }
+
+    const showError = (msg) => {
+        loaderDiv.style.display = "none"
+        errorDiv.style.display = "block"
+        errorDiv.textContent = msg;
+    }
+
+    const showLoader = () => {
+        loaderDiv.style.display = "block"
+        mainElm.style.display = "none"
+        errorDiv.style.display = "none"
+    }
+
+    const showMainBody = () => {
+        loaderDiv.style.display = "none"
+        mainElm.style.display = "flex"
+        errorDiv.style.display = "none"        
+    }
 
     const updateView = ()=>{
-        const locationInput = searchInput.value
+        
+
         const locationDiv = qs(".location-name")
         const descriptionDiv = qs(".description")
         const temperatureDiv = qs(".temperature")
         const windDiv = qs(".wind")
         const humidityDiv = qs(".humidity")
         const weatherImgElm = qs("#weather-image")
-        const loaderDiv = qs("#loader")
-        const mainElm = qs("main")
 
-        loaderDiv.style.display = "block"
-        mainElm.style.display = "none"
+        showLoader()
 
-        getWeatherDetails(locationInput)
+        try {
+            validateInput()
+        } catch(error){
+            showError(error.message)
+            return
+        }
+
+
+        getWeatherDetails(searchInput.value)
         .then(
             (response) => {
                 const {location, current} = {...response}
@@ -41,11 +73,11 @@
                 windDiv.textContent = current.wind_kph
                 humidityDiv.textContent = current.humidity
                 weatherImgElm.src = current.condition.icon.replace("64x64", "128x128")
-                loaderDiv.style.display = "none"
-                mainElm.style.display = "flex"
+                showMainBody()
             }, 
             (error) => {
-                alert("Error "+error)
+                showError(error.message)
+                return
             }
         )
     }

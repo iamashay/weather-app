@@ -138,3 +138,13 @@ main {
     border-radius: 50%;
     display: none;
 }
+
+#error {
+    align-self: center;
+    margin-top: 35px;
+    color: #870505;
+    font-size: 1.2rem;
+    font-weight: 900;
+    font-family: cursive;
+    display: none;
+}
